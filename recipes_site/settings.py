@@ -1,4 +1,6 @@
 from pathlib import Path
+
+from django.conf.global_settings import STATICFILES_FINDERS, STATICFILES_DIRS
 from django.utils.translation import gettext_lazy as _
 import os
 
@@ -28,7 +30,7 @@ SECRET_KEY = 'django-insecure-e=d05v-9w@^w5!x0j*#1l3z-n#p0y@g1i^pv=a&lzh54#%pz2)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['185.221.215.10', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['185.221.215.10', '127.0.0.1']
 
 
 
@@ -113,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_DIRS = [BASE_DIR / 'static',]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
