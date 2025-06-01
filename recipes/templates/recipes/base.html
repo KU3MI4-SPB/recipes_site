@@ -1,13 +1,11 @@
-{% load static %}
-
 <!DOCTYPE html>
 
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Сайт рецептов</title>
-    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
 
     <!-- Здесь добавляйте стили и скрипты -->
@@ -15,7 +13,7 @@
 <body>
     <header>
         <a href="{% url 'home' %}">
-            <img src="{% static 'images/logo.svg' %}" alt="Логотип сайта" style="height: 50px;">
+            <img src="/static/images/logo.svg" alt="Логотип сайта" style="height: 50px;">
         </a>
         <a href="{% url 'home' %}">На главную</a> |
         {% if user.is_authenticated %}
