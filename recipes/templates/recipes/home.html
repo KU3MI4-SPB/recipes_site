@@ -1,0 +1,10 @@
+{% extends 'recipes/base.html' %}
+{% block content %}
+<h2>Рекомендуемые рецепты</h2>
+<ul>
+    {% for recipe in recipes %}
+        <li><a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
