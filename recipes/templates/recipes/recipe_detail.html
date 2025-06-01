@@ -1,14 +1,18 @@
 {% extends 'recipes/base.html' %}
+
 {% block content %}
 <h2>{{ recipe.title }}</h2>
-<img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" style="max-width:300px;">
+{% if recipe.image %}
+    <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" style="max-width:400px;">
+{% endif %}
 <p><strong>Описание:</strong> {{ recipe.description }}</p>
-<p><strong>Шаги приготовления:</strong> {{ recipe.steps }}</p>
+<p><strong>Шаги приготовления:</strong><br>{{ recipe.steps|linebreaks }}</p>
 <p><strong>Время приготовления:</strong> {{ recipe.cooking_time }} минут</p>
 <p><strong>Ингредиенты:</strong> {{ recipe.ingredients }}</p>
 <p><strong>Автор:</strong> {{ recipe.author.username }}</p>
-<p><strong>Категории:</strong> {% for cat in recipe.categories.all %}{{ cat.name }} {% endfor %}</p>
+<p><strong>Категории:</strong> {% for cat in recipe.categories.all %}{{ cat.name }} {% if not forloop.last %}, {% endif %}{% endfor %}</p>
+
 {% if user == recipe.author %}
-    <a href="{% url 'edit_recipe' recipe.pk %}">Редактировать</a>
+    <a href="{% url 'edit_recipe' recipe.pk %}">Редактировать рецепт</a>
 {% endif %}
 {% endblock %}

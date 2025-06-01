@@ -12,11 +12,11 @@ class Recipe(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     steps = models.TextField()
-    cooking_time = models.PositiveIntegerField(help_text="Время приготовления в минутах")
+    cooking_time = models.PositiveIntegerField(help_text="в минутах")
     image = models.ImageField(upload_to='recipes/', blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='recipes')
     categories = models.ManyToManyField(Category, through='RecipeCategory')
-    ingredients = models.TextField(help_text="Ингредиенты, разделённые запятыми", blank=True)
+    ingredients = models.TextField(help_text="разделённые запятыми", blank=True)
 
     def __str__(self):
         return self.title

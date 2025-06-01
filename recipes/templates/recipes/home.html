@@ -1,9 +1,12 @@
 {% extends 'recipes/base.html' %}
+
 {% block content %}
-<h2>Рекомендуемые рецепты</h2>
+<h2>5 случайных рецептов</h2>
 <ul>
     {% for recipe in recipes %}
         <li><a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.title }}</a></li>
+    {% empty %}
+        <li>Рецептов пока нет.</li>
     {% endfor %}
 </ul>
 {% endblock %}
